@@ -15,5 +15,11 @@ final class AppTheme {
         colorScheme: ColorScheme.fromSeed(
           seedColor: ColorName.purplePristine,
         ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: ColorName.purplePristine,
+            foregroundColor: ColorName.placeboPurple,
+          )
+        )
       );
 }

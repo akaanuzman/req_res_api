@@ -9,9 +9,18 @@ final class StringConstants {
   static const String cancel = "Cancel";
   static const String yes = "Yes";
   static const String no = "No";
+  static const String login = "Login";
   static const String dearUser = "Dear User";
   static const String areUSureLogout =
       "You will be logged out. Are you sure you want to continue?";
   static const String somethingWentWrong = "Something went wrong!";
+  static const String signUpDesc = "Don't have an account ?";
+  static const String signUp = "Sign Up";
+
+  // TextFields Constants
+  static const String emailLabel = "Email";
+  static const String emailHint = "example@example.com";
+    static const String passwordLabel = "Password";
+  static const String passwordHint = "******";
 
 }

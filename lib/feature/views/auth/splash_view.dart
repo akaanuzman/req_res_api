@@ -1,18 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:kartal/kartal.dart';
 import 'package:lottie/lottie.dart';
 import '../../../products/constants/index.dart';
 
 import '../../../products/generation/index.dart';
+import '../../../products/utilities/routes/app_routes.dart';
 
 class SplashView extends StatelessWidget {
   const SplashView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: _ImageAndTitle(),
+    return Scaffold(
+      body: FutureBuilder(
+        future: Future.delayed(
+          const Duration(seconds: 2),
+          () => context.go(AppRoutes.login.path),
+        ),
+        builder: (context, snapshot) {
+          return const Center(
+            child: _ImageAndTitle(),
+          );
+        }
       ),
     );
   }

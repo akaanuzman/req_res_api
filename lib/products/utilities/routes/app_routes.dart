@@ -7,4 +7,6 @@ enum AppRoutes {
 
   const AppRoutes(this.value);
   final String value;
+
+  String get path => "/$value";
 }
