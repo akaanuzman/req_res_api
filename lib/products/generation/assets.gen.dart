@@ -25,8 +25,11 @@ class $AssetsLottiesGen {
   /// File path: assets/lotties/img_login.json
   String get imgLogin => 'assets/lotties/img_login.json';
 
+  /// File path: assets/lotties/img_splash.json
+  String get imgSplash => 'assets/lotties/img_splash.json';
+
   /// List of all assets
-  List<String> get values => [imgLogin];
+  List<String> get values => [imgLogin, imgSplash];
 }
 
 class Assets {
