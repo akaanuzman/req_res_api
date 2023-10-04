@@ -38,7 +38,7 @@ mixin RegisterMixin on ConsumerState<RegisterView> {
       context: context,
       title: StringConstants.dearUser,
       content: message ?? StringConstants.registered,
-      onYesPressed: goHome,
+      onYesPressed: message == null ? goHome : null,
     );
   }
 
