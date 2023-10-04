@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import 'package:lottie/lottie.dart';
-import 'package:req_res_api/feature/views/auth/mixin/login_mixin.dart';
-import 'package:req_res_api/products/generation/index.dart';
-import 'package:req_res_api/products/widgets/text_fields/special_text_from_field.dart';
+import 'mixin/login_mixin.dart';
+import '../index.dart';
+import '../../../products/generation/index.dart';
+import '../../../products/widgets/text_fields/special_text_from_field.dart';
 
 import '../../../products/constants/index.dart';
 
@@ -65,7 +66,13 @@ class _LoginViewState extends State<LoginView> with LoginMixin {
                   children: [
                     const Text(StringConstants.signUpDesc),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (_) => const RegisterView(),
+                          ),
+                        );
+                      },
                       child: const Text(StringConstants.signUp),
                     )
                   ],

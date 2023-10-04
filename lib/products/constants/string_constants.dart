@@ -16,11 +16,13 @@ final class StringConstants {
   static const String somethingWentWrong = "Something went wrong!";
   static const String signUpDesc = "Don't have an account ?";
   static const String signUp = "Sign Up";
+  static const String register = "Register";
+  static const String registered = "Successfully registered you will be redirected to the home screen";
 
   // TextFields Constants
   static const String emailLabel = "Email";
   static const String emailHint = "example@example.com";
-    static const String passwordLabel = "Password";
+  static const String passwordLabel = "Password";
   static const String passwordHint = "******";
-
+  static const String confirmPasswordLabel = "Confirm Password";
 }

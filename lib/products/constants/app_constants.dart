@@ -6,5 +6,5 @@ final class AppConstants {
 
   static const String appName = 'ReqRes Api';
   static const bool isShowDebugBanner = false;
-  static const String baseUrl = '';
+  static const String baseUrl = 'https://reqres.in/api/';
 }

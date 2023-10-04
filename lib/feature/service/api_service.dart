@@ -5,12 +5,12 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
-import '../../../feature/models/base_model.dart';
-import '../../constants/index.dart';
+import '../models/base_model.dart';
+import '../../products/constants/index.dart';
 
 enum Endpoint { login, register, users }
 
-enum ResponseKeys { data, error }
+enum ResponseKeys { data, token, error }
 
 /// `ApiService` class
 /// This class is written to manage the methods to be done in the api.
@@ -55,6 +55,45 @@ final class ApiService {
       String? errorMessage =
           e.response!.data[ResponseKeys.error.name] as String?;
       return (array, errorMessage);
+    }
+  }
+
+  /// Generic method that allows us to assign post to api
+  /// Parameters:
+  /// [url] -> API Url
+  /// [model] -> Model created from json data returned from api
+  /// [body] -> Data to be sent to API in Map<String,dynamic> type
+  /// 
+  /// Returns: Returns a tuple data type. First returned value in Tuple [Generic] list of data retrieved from api
+  /// Second value [error] message
+  static Future<(T, String?)> post<T extends BaseModel>({
+    required String url,
+    required T model,
+    required Map<String, dynamic> body,
+  }) async {
+    final dio = Dio();
+
+    try {
+      final Response response = await dio.post(
+        url,
+        data: body,
+      );
+
+      if (response.statusCode == HttpStatus.ok) {
+        model = model.fromJson(response.data);
+        return (model, null);
+      } else {
+        String? errorMessage =
+            response.data[ResponseKeys.error.name] as String?;
+        return (model, errorMessage);
+      }
+    } on DioException catch (e) {
+      if (e.response == null)
+        return (model, StringConstants.somethingWentWrong);
+
+      String? errorMessage =
+          e.response!.data[ResponseKeys.error.name] as String?;
+      return (model, errorMessage);
     }
   }
 }

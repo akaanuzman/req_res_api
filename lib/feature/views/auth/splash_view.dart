@@ -1,29 +1,39 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:kartal/kartal.dart';
 import 'package:lottie/lottie.dart';
+import 'package:req_res_api/feature/views/home/home_view.dart';
+import '../../service/local_storage_service.dart';
+import '../index.dart';
 import '../../../products/constants/index.dart';
 
 import '../../../products/generation/index.dart';
-import '../../../products/utilities/routes/app_routes.dart';
 
 class SplashView extends StatelessWidget {
   const SplashView({super.key});
+
+  Future<void> readLocalStorage(BuildContext context) async {
+    String? token =
+        await LocaleStorageService().read(LocaleStorageKeys.token.name);
+    Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute(
+        builder: (_) => token == null ? const LoginView() : const HomeView(),
+      ),
+      (route) => false,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: FutureBuilder(
-        future: Future.delayed(
-          const Duration(seconds: 2),
-          () => context.go(AppRoutes.login.path),
-        ),
-        builder: (context, snapshot) {
-          return const Center(
-            child: _ImageAndTitle(),
-          );
-        }
-      ),
+          future: readLocalStorage(context),
+          builder: (context, snapshot) {
+            return const Center(
+              child: _ImageAndTitle(),
+            );
+          }),
     );
   }
 }
