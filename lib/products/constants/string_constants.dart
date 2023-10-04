@@ -25,4 +25,11 @@ final class StringConstants {
   static const String passwordLabel = "Password";
   static const String passwordHint = "******";
   static const String confirmPasswordLabel = "Confirm Password";
+
+  // Validators Constants
+  static const String emailCannotBeEmpty = "Email cannot be empty";
+  static const String emailMustBeValid = "Email must be valid";
+  static const String passwordCannotBeEmpty = "Password cannot be empty";
+  static const String passwordMustBeValid = "Password must be valid";
+  static const String passwordDoesNotMatch = "Password does not match";
 }

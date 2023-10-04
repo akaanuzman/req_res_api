@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:req_res_api/feature/controllers/auth_controller.dart';
-import 'package:req_res_api/feature/views/home/home_view.dart';
 import 'package:req_res_api/feature/views/index.dart';
 import 'package:req_res_api/products/constants/index.dart';
 import 'package:req_res_api/products/widgets/alert_dialog/approve_dialog.dart';

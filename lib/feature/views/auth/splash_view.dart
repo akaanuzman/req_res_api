@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import 'package:lottie/lottie.dart';
-import 'package:req_res_api/feature/views/home/home_view.dart';
 
 import '../../../products/constants/index.dart';
 import '../../../products/generation/index.dart';

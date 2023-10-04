@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kartal/kartal.dart';
 import 'package:lottie/lottie.dart';
+
 import '../../../products/constants/index.dart';
 import '../../../products/generation/index.dart';
 import '../../../products/utilities/validators/app_validators.dart';
-
 import '../../../products/widgets/text_fields/special_text_from_field.dart';
 import 'mixin/register_mixin.dart';
 
@@ -31,11 +31,15 @@ class _RegisterViewState extends ConsumerState<RegisterView>
         child: ListView(
           padding: context.padding.normal,
           children: [
+            // Register Image
             AspectRatio(
               aspectRatio: AspectRatioConstants.large.value,
               child: Lottie.asset(Assets.lotties.imgRegister),
             ),
+
             context.sized.emptySizedHeightBoxNormal,
+
+            // Email Field
             SpecialTextFormField(
               textEditingController: emailController,
               labelText: StringConstants.emailLabel,
@@ -45,7 +49,10 @@ class _RegisterViewState extends ConsumerState<RegisterView>
               textInputAction: TextInputAction.next,
               validator: AppValidators.emailValidator,
             ),
+
             context.sized.emptySizedHeightBoxLow3x,
+
+            // Password Field
             SpecialTextFormField(
               textEditingController: passwordController,
               labelText: StringConstants.passwordLabel,
@@ -64,7 +71,10 @@ class _RegisterViewState extends ConsumerState<RegisterView>
               obscureText: watch.isHidePassword,
               validator: AppValidators.passwordValidator,
             ),
+
             context.sized.emptySizedHeightBoxLow3x,
+
+            // Confirm Password Field
             SpecialTextFormField(
               textEditingController: confirmPasswordController,
               labelText: StringConstants.confirmPasswordLabel,
@@ -86,7 +96,10 @@ class _RegisterViewState extends ConsumerState<RegisterView>
                 value,
               ),
             ),
+
             context.sized.emptySizedHeightBoxLow3x,
+
+            // Register Button
             SizedBox(
               height: ButtonSizeConstants.normal.value,
               width: double.infinity,

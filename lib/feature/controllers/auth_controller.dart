@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../products/constants/index.dart';
-import '../models/register_model.dart';
+import '../models/auth_response_model.dart';
 import '../service/index.dart';
 
 final class AuthController with ChangeNotifier {
@@ -11,9 +11,9 @@ final class AuthController with ChangeNotifier {
   bool _isHideConfrimPassword = true;
   bool get isHideConfrimPassword => _isHideConfrimPassword;
 
-  RegisterResponseModel _registerResponseModel = const RegisterResponseModel();
+  AuthResponseModel _authResponseModel = const AuthResponseModel();
 
-  RegisterResponseModel get registerResponseModel => _registerResponseModel;
+  AuthResponseModel get authResponseModel => _authResponseModel;
 
   String? _errorMessage;
   String? get errorMessage => _errorMessage;
@@ -46,14 +46,14 @@ final class AuthController with ChangeNotifier {
         ? "${AppConstants.baseUrl}${Endpoint.register.name}"
         : "${AppConstants.baseUrl}${Endpoint.register.name}";
 
-    (RegisterResponseModel, String?) response =
-        await ApiService.post<RegisterResponseModel>(
+    (AuthResponseModel, String?) response =
+        await ApiService.post<AuthResponseModel>(
       url: url,
-      model: _registerResponseModel,
+      model: _authResponseModel,
       body: body,
     );
 
-    _registerResponseModel = response.$1;
+    _authResponseModel = response.$1;
     _errorMessage = response.$2;
 
     await _saveTokenToLocale();
@@ -65,17 +65,17 @@ final class AuthController with ChangeNotifier {
   }
 
   Future<void> _saveTokenToLocale() async {
-    if (_registerResponseModel.token == null) return;
+    if (_authResponseModel.token == null) return;
     await LocaleStorageService().write<String>(
       key: LocaleStorageKeys.token.name,
-      value: _registerResponseModel.token!,
+      value: _authResponseModel.token!,
     );
   }
 
   void onDispose() {
     _isHidePassword = true;
     _isHideConfrimPassword = true;
-    _registerResponseModel = const RegisterResponseModel();
+    _authResponseModel = const AuthResponseModel();
     _errorMessage = null;
     notifyListeners();
   }

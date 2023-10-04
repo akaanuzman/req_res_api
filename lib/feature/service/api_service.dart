@@ -63,7 +63,7 @@ final class ApiService {
   /// [url] -> API Url
   /// [model] -> Model created from json data returned from api
   /// [body] -> Data to be sent to API in Map<String,dynamic> type
-  /// 
+  ///
   /// Returns: Returns a tuple data type. First returned value in Tuple [Generic] list of data retrieved from api
   /// Second value [error] message
   static Future<(T, String?)> post<T extends BaseModel>({

@@ -6,7 +6,6 @@ import 'package:req_res_api/products/constants/string_constants.dart';
 import 'package:req_res_api/products/widgets/alert_dialog/approve_dialog.dart';
 
 import '../../../controllers/auth_controller.dart';
-import '../../home/home_view.dart';
 import '../../index.dart';
 
 mixin LoginMixin on ConsumerState<LoginView> {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kartal/kartal.dart';
 import 'package:lottie/lottie.dart';
-import 'package:req_res_api/products/utilities/validators/app_validators.dart';
+import '../../../products/utilities/validators/app_validators.dart';
 
 import '../../../products/constants/index.dart';
 import '../../../products/generation/index.dart';
@@ -27,12 +27,17 @@ class _LoginViewState extends ConsumerState<LoginView> with LoginMixin {
         child: ListView(
           padding: context.padding.normal,
           children: [
+            // Login Image
             Lottie.asset(Assets.lotties.imgLogin),
+
             context.sized.emptySizedHeightBoxLow,
+
+            // Others
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
+                  // Email Field
                   SpecialTextFormField(
                     textEditingController: emailController,
                     labelText: StringConstants.emailLabel,
@@ -42,7 +47,10 @@ class _LoginViewState extends ConsumerState<LoginView> with LoginMixin {
                     textInputAction: TextInputAction.next,
                     validator: AppValidators.emailValidator,
                   ),
+
                   context.sized.emptySizedHeightBoxLow3x,
+
+                  // Password Field
                   SpecialTextFormField(
                     textEditingController: passwordController,
                     labelText: StringConstants.passwordLabel,
@@ -61,7 +69,10 @@ class _LoginViewState extends ConsumerState<LoginView> with LoginMixin {
                     obscureText: watch.isHidePassword,
                     validator: AppValidators.passwordValidator,
                   ),
+
                   context.sized.emptySizedHeightBoxLow3x,
+
+                  // Login Button
                   SizedBox(
                     height: ButtonSizeConstants.normal.value,
                     width: double.infinity,
@@ -71,7 +82,10 @@ class _LoginViewState extends ConsumerState<LoginView> with LoginMixin {
                       label: const Text(StringConstants.login),
                     ),
                   ),
+
                   context.sized.emptySizedHeightBoxLow3x,
+
+                  // Sign Up Section
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 
+import '../../constants/index.dart';
+
 /// This class is used to validate text fields
 /// [AppValidators] is a class that contains static methods
 /// [AppValidators] is immutable
@@ -12,9 +14,9 @@ final class AppValidators {
   /// [value] is the value of the text fields
   static String? emailValidator(String? value) {
     if (value == null || value.isEmpty) {
-      return "Email cannot be empty";
+      return StringConstants.emailCannotBeEmpty;
     } else if (!value.ext.isValidEmail) {
-      return "Email must be valid";
+      return StringConstants.emailMustBeValid;
     } else {
       return null;
     }
@@ -24,9 +26,9 @@ final class AppValidators {
   /// [value] is the value of the text fields
   static String? passwordValidator(String? value) {
     if (value == null || value.isEmpty) {
-      return "Password cannot be empty";
+      return StringConstants.passwordCannotBeEmpty;
     } else if (value.ext.isValidPassword) {
-      return "Password must be valid";
+      return StringConstants.passwordMustBeValid;
     } else {
       return null;
     }
@@ -38,12 +40,12 @@ final class AppValidators {
   static String? confrimPasswordValidator(
       String? password, String? confirmPassword) {
     if (password == null || password.isEmpty) {
-      return "Password cannot be empty";
+      return StringConstants.passwordCannotBeEmpty;
     } else if (password != confirmPassword) {
-      return "Password does not match";
+      return StringConstants.passwordDoesNotMatch;
     } else if (password.ext.isValidPassword &&
         confirmPassword.ext.isValidPassword) {
-      return "Passwords must be valid";
+      return StringConstants.passwordMustBeValid;
     }
     return null;
   }
