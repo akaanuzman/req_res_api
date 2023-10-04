@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-void main() => runApp(const MyApp());
+import 'feature/views/index.dart';
+import 'products/constants/index.dart';
+import 'products/utilities/theme/app_theme.dart';
+
+void main() => runApp(
+      const ProviderScope(child: MyApp()),
+    );
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -8,15 +15,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'ReqRes Api',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Material App Bar'),
-        ),
-        body: const Center(
-          child: Text('Hello World'),
-        ),
-      ),
+      debugShowCheckedModeBanner: AppConstants.isShowDebugBanner,
+      title: AppConstants.appName,
+      theme: AppTheme().currentTheme,
+      home: const SplashView(),
     );
   }
 }
