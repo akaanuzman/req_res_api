@@ -29,9 +29,10 @@ mixin RegisterMixin on ConsumerState<RegisterView> {
     if (formKey.currentState == null) return;
     if (!formKey.currentState!.validate()) return;
 
-    String? message = await ref.read(authController).register(
-          emailController.text,
-          passwordController.text,
+    String? message = await ref.read(authController).authentication(
+          email: emailController.text,
+          password: passwordController.text,
+          isRegister: true,
         );
 
     await ApproveDialog.show(

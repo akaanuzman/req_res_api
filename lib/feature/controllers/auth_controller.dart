@@ -1,10 +1,8 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import '../models/register_model.dart';
-import '../service/index.dart';
 
 import '../../products/constants/index.dart';
+import '../models/register_model.dart';
+import '../service/index.dart';
 
 final class AuthController with ChangeNotifier {
   bool _isHidePassword = true;
@@ -34,13 +32,19 @@ final class AuthController with ChangeNotifier {
   /// [email] is required.
   /// [password] is required.
   /// [return] is a error message nullable.
-  Future<String?> register(String email, String password) async {
+  Future<String?> authentication({
+    required String email,
+    required String password,
+    bool isRegister = false,
+  }) async {
     Map<String, dynamic> body = {
       "email": email,
       "password": password,
     };
 
-    final String url = "${AppConstants.baseUrl}${Endpoint.register.name}";
+    final String url = isRegister
+        ? "${AppConstants.baseUrl}${Endpoint.register.name}"
+        : "${AppConstants.baseUrl}${Endpoint.register.name}";
 
     (RegisterResponseModel, String?) response =
         await ApiService.post<RegisterResponseModel>(
@@ -53,7 +57,7 @@ final class AuthController with ChangeNotifier {
     _errorMessage = response.$2;
 
     await _saveTokenToLocale();
-    
+
     notifyListeners();
 
     if (_errorMessage == null) return null;
@@ -61,11 +65,18 @@ final class AuthController with ChangeNotifier {
   }
 
   Future<void> _saveTokenToLocale() async {
-    log("message");
     if (_registerResponseModel.token == null) return;
     await LocaleStorageService().write<String>(
       key: LocaleStorageKeys.token.name,
       value: _registerResponseModel.token!,
     );
+  }
+
+  void onDispose() {
+    _isHidePassword = true;
+    _isHideConfrimPassword = true;
+    _registerResponseModel = const RegisterResponseModel();
+    _errorMessage = null;
+    notifyListeners();
   }
 }

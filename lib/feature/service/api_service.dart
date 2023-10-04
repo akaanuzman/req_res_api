@@ -5,8 +5,8 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
-import '../models/base_model.dart';
 import '../../products/constants/index.dart';
+import '../models/base_model.dart';
 
 enum Endpoint { login, register, users }
 

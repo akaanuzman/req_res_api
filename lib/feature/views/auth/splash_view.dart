@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import 'package:lottie/lottie.dart';
 import 'package:req_res_api/feature/views/home/home_view.dart';
+
+import '../../../products/constants/index.dart';
+import '../../../products/generation/index.dart';
 import '../../service/local_storage_service.dart';
 import '../index.dart';
-import '../../../products/constants/index.dart';
-
-import '../../../products/generation/index.dart';
 
 class SplashView extends StatelessWidget {
   const SplashView({super.key});
@@ -28,12 +28,13 @@ class SplashView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: FutureBuilder(
-          future: readLocalStorage(context),
-          builder: (context, snapshot) {
-            return const Center(
-              child: _ImageAndTitle(),
-            );
-          }),
+        future: readLocalStorage(context),
+        builder: (context, snapshot) {
+          return const Center(
+            child: _ImageAndTitle(),
+          );
+        },
+      ),
     );
   }
 }
