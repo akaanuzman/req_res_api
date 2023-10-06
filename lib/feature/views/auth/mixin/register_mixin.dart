@@ -28,7 +28,7 @@ mixin RegisterMixin on ConsumerState<RegisterView> {
     if (formKey.currentState == null) return;
     if (!formKey.currentState!.validate()) return;
 
-    String? message = await ref.read(authController).authentication(
+    String? errorMessage = await ref.read(authController).authentication(
           email: emailController.text,
           password: passwordController.text,
           isRegister: true,
@@ -37,8 +37,8 @@ mixin RegisterMixin on ConsumerState<RegisterView> {
     await ApproveDialog.show(
       context: context,
       title: StringConstants.dearUser,
-      content: message ?? StringConstants.registered,
-      onYesPressed: message == null ? goHome : null,
+      content: errorMessage ?? StringConstants.registered,
+      onYesPressed: errorMessage == null ? goHome : null,
     );
   }
 

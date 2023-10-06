@@ -20,7 +20,7 @@ class _HomeViewState extends ConsumerState<HomeView> with HomeMixin {
     var watch = ref.watch(userController);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Users'),
+        title: const Text(StringConstants.users),
         actions: [
           IconButton(
             onPressed: () async => showLogoutDialog(),

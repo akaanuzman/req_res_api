@@ -18,6 +18,7 @@ final class StringConstants {
   static const String signUp = "Sign Up";
   static const String register = "Register";
   static const String registered = "Successfully registered you will be redirected to the home screen";
+  static const String users = "Users";
 
   // TextFields Constants
   static const String emailLabel = "Email";
